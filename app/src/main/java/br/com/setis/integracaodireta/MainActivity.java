@@ -14,26 +14,25 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.nio.charset.StandardCharsets;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-
+import br.com.setis.integracaodireta.databinding.ActivityMainBinding;
 public class MainActivity extends AppCompatActivity {
     private String saidaTransacao = "";
     private String transacaoPendente = "";
     private String TAG = "MainActivity";
 
-    @BindView(R.id.tvUri)
-    TextView tvUri;
+    private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
-        ButterKnife.bind(this);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
 
-        tvUri.setVisibility(View.INVISIBLE);
+        binding.tvUri.setVisibility(View.INVISIBLE);
+        binding.btnMenuAdmin.setOnClickListener(v -> chamaMenuAdministrativo());
+        binding.btnVenda.setOnClickListener(v -> chamaVenda());
     }
 
     @Override
@@ -51,15 +50,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onRestart() {
         super.onRestart();
     }
-
-    @OnClick(R.id.menu_administrativo)
     public void chamaMenuAdministrativo() {
         String dadosAdm = "app://payment/input?transactionId=12345&operation=ADMINISTRATIVA";
         Uri uri = Uri.parse(dadosAdm);
         iniciaTransacao(uri);
     }
-
-    @OnClick(R.id.btnVenda)
     public void chamaVenda() {
         String dadosVenda = "app://payment/input?" +
                 "operation=VENDA&" +
@@ -114,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
                 saidaTransacao = java.net.URLDecoder.decode(
                         intent.getData().toString(), StandardCharsets.UTF_8.name());
                 Log.d(TAG, "SaidaTransacao: " + saidaTransacao);
-                tvUri.setText(saidaTransacao);
+                binding.tvUri.setText(saidaTransacao);
 
                 transacaoPendente = intent.getStringExtra("TransacaoPendenteDados");
                 if (transacaoPendente != null) {
@@ -129,13 +124,13 @@ public class MainActivity extends AppCompatActivity {
                         this.sendBroadcast(transacao);
                     }
                 }
-                tvUri.setVisibility(View.VISIBLE);
+                binding.tvUri.setVisibility(View.VISIBLE);
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
 
         } else {
-            tvUri.setVisibility(View.VISIBLE);
+            binding.tvUri.setVisibility(View.VISIBLE);
         }
     }
 

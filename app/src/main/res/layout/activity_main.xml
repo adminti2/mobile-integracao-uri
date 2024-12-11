@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/menu_administrativo"
+        android:id="@+id/btnMenuAdmin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Administrativo"
@@ -21,7 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Venda"
-        app:layout_constraintLeft_toRightOf="@id/menu_administrativo"
+        app:layout_constraintLeft_toRightOf="@id/btnMenuAdmin"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -39,27 +39,5 @@
         >
     </TextView>
     </ScrollView>
-
-<!--    <TextView-->
-<!--        android:id="@+id/tvSaidaTransacao"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        app:layout_constraintBottom_toTopOf="@id/ivComprovante"-->
-<!--        app:layout_constraintLeft_toLeftOf="parent"-->
-<!--        app:layout_constraintRight_toRightOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/btnVenda">-->
-<!--    </TextView>-->
-
-<!--    <ImageView-->
-<!--        android:id="@+id/ivComprovante"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintLeft_toLeftOf="parent"-->
-<!--        app:layout_constraintRight_toRightOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/tvSaidaTransacao">-->
-<!--    </ImageView>-->
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
