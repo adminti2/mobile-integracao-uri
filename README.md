@@ -117,7 +117,7 @@ A tabela a seguir indica os parâmetros de requisição para uma transação:
 | paymentMode | O | C | Modalidade de pagamento. Valores possíveis:<br/><ul><li>PAGAMENTO\_CARTAO;</li><li>PAGAMENTO\_DINHEIRO;</li><li>PAGAMENTO\_CHEQUE;</li><li>PAGAMENTO\_CARTEIRA\_VIRTUAL.</li></ul> |
 | installments | O | N | Número de parcelas. |
 | predatedDate | O | AN | Data do pré-datado. |
-| fiscalDocument | O | AN | Número do documento fiscal. |
+| fiscalDocument | O | AN | Número do documento fiscal. Tamanho máximo: 12 caracteres |
 | taxId | O | AN | CPNJ/CPF do estabelecimento. |
 | billNumber | O | AN | Número da fatura. |
 | phoneNumber | O | AN | Número de telefone, com DDD. |
@@ -264,7 +264,7 @@ app://payment/posCustomization?fontColor=%23000000&keyboardFontColor=%23000000&e
 
 O tamanho do logo (toolbarIcon) enviado precisa ser menor que _100kb_ podendo ser nos formatos .pgn, .jpg e .bmp.
 
-Para enviar a fonte utilizada no texto (font) e/ou o logo (toolbarIcon) através da URI, é necessário fazer a conversão deles para _bytes_ e, em seguida, condificá-los usando o Base64. O exemplo abaixo, em linguagem Java, ilustra uma maneira de fazer essa conversão:
+Para enviar a fonte utilizada no texto (font) e/ou o logo (toolbarIcon) através da URI, é necessário fazer a conversão deles para _bytes_ e, em seguida, codificá-los usando o Base64. O exemplo abaixo, em linguagem Java, ilustra uma maneira de fazer essa conversão:
 ```java
 try {
     File file = (File)f.get("/sdcard/CaviarDreams.ttf");
